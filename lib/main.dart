@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ws/blocs/chat_bloc.dart';
+import 'package:flutter_ws/services/app_service.dart';
 
 import 'home_page.dart';
 
@@ -18,7 +21,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(),
+      home: BlocProvider(
+        create: (context) => ChatBloc(AppService()),
+        child: MyHomePage(),
+      ),
     );
   }
 }
